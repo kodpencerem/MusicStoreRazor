@@ -1,0 +1,38 @@
+﻿@page
+@model MusicStoreRazor.UI.Pages.MusicList.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br />
+<h1>Şarkı Detay Bilgileri Formu</h1>
+<hr />
+<div>
+    <dl class="border container">
+
+        <dt style="margin-top: 15px" class="col-sm-2">
+            <strong> Şarkı İsmi:</strong>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Music.Name)
+        </dd>
+        <dt class="col-sm-2">
+            <strong> Sanatçı Adı:</strong>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Music.Author)
+        </dd>
+        <dt class="col-sm-2">
+            <strong>Barkod Numarası:</strong>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Music.BarcodeNumber)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-info " asp-page="./Edit" asp-route-id="@Model.Music.Id">Düzenle</a> |
+    <a class="btn btn-success" asp-page="./Index">Şarkı Listesi||Ana Sayfa</a>
+</div>

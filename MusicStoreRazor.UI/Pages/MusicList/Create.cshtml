@@ -1,0 +1,56 @@
+﻿@page
+@model MusicStoreRazor.UI.Pages.MusicList.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<br />
+<h1>Yeni Şarkı Ekleme Formu</h1>
+<hr />
+<div class="border container">
+    
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <br/>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Music.Name" class="control-label"><strong>Şarkı Adı:</strong></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="Music.Name" class="form-control" />
+                    <span asp-validation-for="Music.Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Music.Author" class="control-label"><strong>Sanatçı Adı:</strong></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="Music.Author" class="form-control" />
+                    <span asp-validation-for="Music.Author" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Music.BarcodeNumber" class="control-label"><strong>Barkod Numarası:</strong></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="Music.BarcodeNumber" class="form-control" />
+                    <span asp-validation-for="Music.BarcodeNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-primary offset-2" /> |
+                <a class="btn btn-success" asp-page="./Index">Şarkı Listesi||Ana Sayfa</a>
+            </div>
+        </form>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

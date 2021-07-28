@@ -1,0 +1,41 @@
+﻿@page
+@model MusicStoreRazor.UI.Pages.MusicList.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<br/>
+<h2>Şarkı Silme Formu</h2>
+<hr/>
+<strong class="text-danger">Bu Şarkıyı Silmek İstediğinize Emin Misiniz?</strong>
+<div>
+    <hr />
+    <dl class="border container">
+        
+        <dt style="margin-top: 15px" class="col-sm-2">
+            <strong> Şarkı İsmi:</strong>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Music.Name)
+        </dd>
+        <dt class="col-sm-2">
+            <strong> Sanatçı Adı:</strong>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Music.Author)
+        </dd>
+        <dt class="col-sm-2">
+            <strong>Barkod Numarası:</strong>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Music.BarcodeNumber)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Music.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a class="btn btn-success" asp-page="./Index">Şarkı Listesi||Ana Sayfa</a>
+    </form>
+</div>

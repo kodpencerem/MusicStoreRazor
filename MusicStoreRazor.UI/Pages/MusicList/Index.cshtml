@@ -1,0 +1,67 @@
+﻿@page
+@model MusicStoreRazor.UI.Pages.MusicList.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br/>
+
+
+<div class="container row p-0 m-0">
+    
+    <div class="col-9">
+        <h2 class="text-info">Şarkı Listesi</h2>
+    </div>
+    
+    <div class="col-3">
+        
+        <a asp-page="Create" class="btn btn-info form-control text-white">
+            Yeni Bir Şarkı Ekle
+        </a>
+    </div>
+    
+    <div class="col-12 border p-3 m-3">
+        
+        <form method="post">
+            @if (Model.Music.Count() > 0)
+            {
+                <table class="table table-striped border">
+                    
+                    <tr class="table-secondary">
+                        <th>
+                            <label  asp-for="Music.FirstOrDefault().Name">Şarkı İsmi</label>
+                        </th>
+
+                        <th>
+                            <label asp-for="Music.FirstOrDefault().Author">Sanatçı Adı</label>
+                        </th>
+                        <th>İşlemler</th>
+                    </tr>
+                    @foreach (var music in Model.Music)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(x=>music.Name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(x => music.Author)
+                            </td>
+                            <td >
+                                <a asp-page="./Edit" asp-route-id="@music.Id" class="btn btn-success btn-sm">Düzenle</a> |
+                                <a asp-page="./Details" asp-route-id="@music.Id" class="btn btn-info btn-sm">Detay Bilgisi</a> |
+                                <a asp-page="./Delete" asp-route-id="@music.Id" class="btn btn-danger btn-sm">Sil</a> ||
+                                <a asp-page="./AddPlayList" asp-route-id="@music.Id" class="btn btn-info btn-sm">Albüme Ekle</a> 
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            }
+        </form>
+
+    </div>
+
+</div>
